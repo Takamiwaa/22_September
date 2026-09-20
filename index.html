@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Luna Ameera Zalianty ✨</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LUXURY COSMIC BACKGROUND -->
+    <div class="city-bg">
+        <div class="galaxy-nebula"></div>
+        <div class="galaxy-stars-layer"></div>
+        <img src="foto/bulan.png" class="space-moon" alt="Bulan">
+        <img src="foto/pluto.png" class="space-pluto" alt="Pluto">
+        <img src="foto/roket.png" class="space-rocket" alt="Roket">
+        <div class="grid-horizon"></div>
+        <div class="city-lights-glow"></div>
+        <div class="skyland-silhouette"></div>
+        <div class="city-silhouette"></div>
+    </div>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- AUDIO PLAYER -->
+    <audio id="bg-music" src="oxygen (lyric video)_(1).mp3" loop preload="auto"></audio>
+
+    <button class="music-btn" id="music-toggle" title="Toggle Music">
+        <div class="music-waves" id="music-waves">
+            <span></span><span></span><span></span>
+        </div>
+        <i class="fas fa-music" id="music-icon"></i>
+    </button>
+
+    <div class="page-viewport">
+
+        <!-- SLIDE 0: OPENING SCREEN -->
+        <div class="page-slide active" id="slide-0">
+            <div class="glass-card">
+                <span class="badge-gold"><i class="fas fa-crown"></i> Happy Birthday</span>
+                <h1 class="page-title text-animated-gold">Buat My Bini</h1>
+                <p class="page-description">Spesial Ulang Tahun Luna Ameera Zalianty ✨</p>
+                <button class="btn-luxury" id="btn-start" onclick="goToPage(1)">
+                    <i class="fas fa-envelope-open-text"></i> Buka Undangan
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 1: HERO SECTION -->
+        <div class="page-slide" id="slide-1">
+            <div class="glass-card">
+                <span class="badge-gold"><i class="fas fa-star"></i> Happy Birthday MBG</span>
+                <h1 class="page-title hero-name text-animated-gold" id="typing-name"></h1>
+                <p class="page-description">"Selamat Ultah MBG, maap ya tahun kemarin aku ga ngucapin ulang tahun ke kamu. Maapin ga? ❤️"</p>
+                
+                <div class="calendar-widget-glass">
+                    <div class="calendar-header">
+                        <i class="fas fa-calendar-star calendar-icon text-animated-gold"></i>
+                        <span class="calendar-month-title">SEPTEMBER</span>
+                        <span class="calendar-year-badge">2026</span>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+                    </div>
+                    <div class="calendar-days-grid">
+                        <span class="day-empty"></span>
+                        <span class="day-empty"></span>
+                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                        <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+                        <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+                        <span>20</span><span>21</span>
+                        <span class="day-birthday-highlight" title="Hari Ulang Tahun Special Luna!">
+                            <i class="fas fa-crown birthday-crown-icon"></i>
+                            22
+                        </span>
+                        <span>23</span><span>24</span><span>25</span><span>26</span>
+                        <span>27</span><span>28</span><span>29</span><span>30</span>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn-luxury" onclick="goToPage(2)">
+                        Iya Maapin <i class="fas fa-heart"></i>
+                    </button>
+                    <button class="btn-luxury btn-no" id="btn-no">
+                        Ga mau <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: COUNTDOWN / USIA -->
+        <div class="page-slide" id="slide-2">
+            <div class="glass-card">
+                <span class="badge-gold"><i class="fas fa-sparkles"></i> Milestones</span>
+                <h2 class="page-title text-animated-gold">Cie Umurnya Nambah Lagi! 🎉</h2>
+                <div class="age-box">
+                    <span class="age-number text-animated-gold" id="counter-age">0</span>
+                    <span class="badge-gold" style="margin: 10px 0 0 0;">Tahun</span>
+                </div>
+                <p class="page-description" style="margin-top: 15px;">Selamat memasuki umur ke-18 tahun sayang! Makin dewasa, makin cantik & sukses selalu ✨</p>
+                <button class="btn-luxury" onclick="goToPage(3)">
+                    Lanjut <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: PESAN UCAPAN -->
+        <div class="page-slide" id="slide-3">
+            <div class="glass-card">
+                <span class="badge-gold"><i class="fas fa-scroll"></i> Pesan Spesial Buat MBG</span>
+                <h2 class="page-title text-animated-gold">Baca ya masa ga di baca :) 💬</h2>
+                <p class="page-description message-quote-box">
+                    "Makasih ya udah nemenin aku dan bertahan ampe sekarang hehe. Nggak kerasa waktunya cepat banget, udah hampir 5 tahun kita berhubungan walaupun sempat 1-2 tahun kehalang sekolah. Padahal dulu juga kita ketemuan nggak ada yang tahu wakakak.<br><br>
+                    Selamat ya udah 18 tahun, YAAYYYYYYY! 🎉<br>
+                    Semoga di tahun ini kamu makin bahagia, sehat, dan semua yang kamu mau bisa tercapai. Semangattt!!"
+                </p>
+                <button class="btn-luxury" onclick="goToPage(4)">
+                    Lanjut Ke Kue <i class="fas fa-birthday-cake"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: KUE ULANG TAHUN 3D MEWAH INTERAKTIF -->
+        <div class="page-slide" id="slide-4">
+            <div class="glass-card">
+                <span class="badge-gold"><i class="fas fa-glass-cheers"></i> Special Birthday Cake</span>
+                <h2 class="page-title text-animated-gold">Tiup Lilinnya! 🕯️</h2>
+                
+                <div class="cake-container-3d" id="cake-box" title="Klik untuk meniup lilin!">
+                    <div class="flame-3d" id="candle-flame">
+                        <div class="flame-inner"></div>
+                        <div class="flame-glow-halo"></div>
+                    </div>
+                    <div class="candle-3d"></div>
+                    <div class="cake-topper-badge">18 ✨</div>
+
+                    <div class="cake-tier-top">
+                        <div class="cream-dollops">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="cake-frosting-top"></div>
+                        <div class="cake-drips-gold"></div>
+                        <div class="gold-pearl-string"></div>
+                    </div>
+
+                    <div class="cake-tier-middle">
+                        <div class="cake-frosting-middle"></div>
+                        <div class="cake-ribbon-gold"></div>
+                        <div class="cake-side-jewels">
+                            <i class="fas fa-gem"></i>
+                            <i class="fas fa-crown"></i>
+                            <i class="fas fa-gem"></i>
+                        </div>
+                    </div>
+
+                    <div class="cake-tier-bottom">
+                        <div class="cake-frosting-bottom"></div>
+                        <div class="cake-pattern-gold"></div>
+                        <div class="gold-pearls-base">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+
+                    <div class="cake-plate">
+                        <div class="plate-rim-glow"></div>
+                        <div class="plate-pedestal"></div>
+                    </div>
+                </div>
+
+                <p class="badge-gold" id="cake-status" style="margin-top: 10px; cursor: pointer;">Klik lilin/kue untuk tiup lilinnya! 🎂</p>
+                <br>
+                <button class="btn-luxury" onclick="goToPage(5)" style="margin-top: 15px;">
+                    Lanjut <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: UCAPAN KETERIMA KULIAH UB -->
+        <div class="page-slide" id="slide-5">
+            <div class="glass-card">
+                <span class="badge-gold" style="border-color: #C084FC; color: #E879F9;"><i class="fas fa-graduation-cap"></i> Pencapaian Yg Sangat Gacor</span>
+                <div class="ub-logo-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Logo_Universitas_Brawijaya.svg" alt="Logo Universitas Brawijaya" class="ub-logo">
+                </div>
+                <h2 class="page-title text-purple-glow">Cie Kuliah di Universitas Brawijaya!</h2>
+                <p class="page-description" style="font-size: 1.15rem; line-height: 1.8;">
+                    "Cie jadi anak UB AHAHAHAHA, semangat kuliahnya, apalagi kan jadi anak IT. jangan gampang stress ya please kan baru awal, harus kuat okey?. sip selamat 🎉"
+                </p>
+                <button class="btn-luxury" onclick="goToPage(6)">
+                    Terakhir Mwehe <i class="fas fa-film"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: VIDEO SPESIAL (HALAMAN AKHIR) -->
+        <div class="page-slide" id="slide-6">
+            <div class="glass-card">
+                <span class="badge-gold"><i class="fas fa-video"></i> Video Memories</span>
+                <h2 class="page-title text-animated-gold">Nonton Pas Sinyal Bagus Ya!</h2>
+                <div class="video-wrapper">
+                    <iframe src="https://drive.google.com/file/d/1uGDWQua3PBQB4RsvytKlC38j7kUZs0Yl/preview" title="Special Birthday Video" allowfullscreen></iframe>
+                </div>
+                <br>
+                <button class="btn-luxury" onclick="goToPage(0)" style="margin-top: 15px;">
+                    <i class="fas fa-redo"></i> Ulangi Dari Awal
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LUXURY NAVIGATION CONTROLS & SLIDE DOTS -->
+    <div class="slide-nav-bar" id="slide-nav-bar">
+        <button class="nav-arrow-btn" id="btn-prev-slide" onclick="prevPage()" title="Slide Sebelumnya">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="dots-container" id="slide-dots">
+            <span class="dot active" onclick="goToPage(0)" title="Slide 0: Cover"></span>
+            <span class="dot" onclick="goToPage(1)" title="Slide 1: Hero"></span>
+            <span class="dot" onclick="goToPage(2)" title="Slide 2: Usia 18"></span>
+            <span class="dot" onclick="goToPage(3)" title="Slide 3: Pesan"></span>
+            <span class="dot" onclick="goToPage(4)" title="Slide 4: Kue 3D"></span>
+            <span class="dot" onclick="goToPage(5)" title="Slide 5: Kuliah UB"></span>
+            <span class="dot" onclick="goToPage(6)" title="Slide 6: Video"></span>
+        </div>
+        <button class="nav-arrow-btn" id="btn-next-slide" onclick="nextPage()" title="Slide Selanjutnya">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
